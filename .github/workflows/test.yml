@@ -56,6 +56,9 @@ jobs:
       - name: Instalar wait-on
         run: npm install -g wait-on
 
+      - name: Esperar a que el backend esté listo
+        run: npx wait-on tcp:6007 --timeout 60000  
+
       - name: Esperar backend
         run: wait-on tcp:6007
 
