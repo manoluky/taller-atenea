@@ -49,7 +49,7 @@ jobs:
         run: |
           cd app/backend
           npm run dev > backend.log 2>&1 &
-          env:
+        env:
             MONGO_URI: ${{ env.MONGO_URI }}
             JWT_SECRET: ${{ env.JWT_SECRET }}
             PORT: ${{ env.PORT }}
