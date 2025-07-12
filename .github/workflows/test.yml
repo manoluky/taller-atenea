@@ -56,6 +56,9 @@ jobs:
       - name: Esperar backend
         run: wait-on tcp:6007
 
+      - name: Generar storageState para usuarioEnvia
+        run: npx playwright test tests/loginUsuarioEnvia.spec.ts
+
       - name: Instalar dependencias frontend
         run: |
           cd app/frontend
