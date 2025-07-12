@@ -52,9 +52,7 @@ jobs:
 
       - name: Instalar wait-on
         run: npm install -g wait-on
-
-      - name: Generar storageState para usuarioEnvia
-        run: npx playwright test tests/loginUsuarioEnvia.spec.ts
+             npx playwright test tests/loginUsuarioEnvia.spec.ts
 
       - name: Esperar backend
         run: wait-on tcp:6007
