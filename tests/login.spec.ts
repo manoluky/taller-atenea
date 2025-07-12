@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import TestData from '../datos/testDatos.json';
 import { DashboardPage } from '../pages/dashboardPage';
+import { BackendUtils } from '../utils/backendUtils';
 import fs from 'fs';
 
 let loginPage: LoginPage;
@@ -15,15 +16,33 @@ test.beforeEach(async ({ page }) => {
 
 
 test('TC-7 Verificar inicio de sesión exitoso con credenciales válidas', async ({ page }) => {
-  // Leer el email que se generó en TC-5
-  const { email } = JSON.parse(fs.readFileSync('correo-temp.json', 'utf8'));
-
-  // Actualizar los datos del usuario para el login
-  TestData.usuarioValido.email = email;
-
-  // Realizar login y verificar mensajes
   await loginPage.completarYHacerClickBotonLogin(TestData.usuarioValido);
-  await expect(page.getByText('Inicio de sesión exitoso')).toBeVisible({ timeout: 3000 });
+  await expect(page.getByText('Inicio de sesión exitoso')).toBeVisible();
   await expect(dashboardPage.dashboardTitle).toBeVisible();
-}); 
+});
 
+test('TC-11 Loguearse con nuevo usuario creado por backend', async ({ page, request }) => {
+  const nuevoUsuario = await BackendUtils.crearUsuarioPorAPI(request, TestData.usuarioValido);
+
+  const responsePromiseLogin = page.waitForResponse('http://localhost:6007/api/auth/login');
+  await loginPage.completarYHacerClickBotonLogin(nuevoUsuario);
+
+  const responseLogin = await responsePromiseLogin;
+  const responseBodyLoginJson = await responseLogin.json();
+
+  expect(responseLogin.status()).toBe(200);
+  expect(responseBodyLoginJson).toHaveProperty('token');
+  expect(typeof responseBodyLoginJson.token).toBe('string');
+  expect(responseBodyLoginJson).toHaveProperty('user');
+  expect(responseBodyLoginJson.user).toEqual(expect.objectContaining({
+    id: expect.any(String),
+    firstName: TestData.usuarioValido.nombre,
+    lastName: TestData.usuarioValido.apellido,
+    email: nuevoUsuario.email,
+  }));
+
+
+  await expect(page.getByText('Inicio de sesión exitoso')).toBeVisible();
+  await expect(dashboardPage.dashboardTitle).toBeVisible();
+
+});
