@@ -30,7 +30,7 @@ jobs:
 
       - name: Clonar repo Athenea redux bank
         run: |
-          git clone git@github.com:AAtenea-Conocimientos/redux-athenea-bank.git
+          git clone https://github.com/juantor16/taller-playwright-atenea.git app
 
       - name: Crear carpeta backend y archivo .env
         run: |
