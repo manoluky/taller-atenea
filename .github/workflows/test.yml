@@ -22,7 +22,7 @@ jobs:
       MONGO_URI: ${{ secrets.MONGO_URI }}
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
       PORT: 4000
-      VITE_API_URL: http://localhost:6007
+      VITE_API_URL: http://localhost:4000
 
     steps:
       - name: Checkout repositorio actual
