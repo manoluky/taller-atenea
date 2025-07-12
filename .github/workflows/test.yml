@@ -70,6 +70,7 @@ jobs:
 
       - name: Esperar frontend
         run: wait-on http://localhost:3000
+        
 
  #     - name: Instalar y correr tests (proyectos setup + chromium)
  #       run: |
