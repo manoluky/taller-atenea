@@ -1,14 +1,23 @@
 {
-  "name": "playwright",
+  "name": "taller-playwright-atenea",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ https://github.com/manoluky/taller-playwright-atenea.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": " https://github.com/manoluky/taller-playwright-atenea.git/issues"
+  },
+  "homepage": " https://github.com/manoluky/taller-playwright-ateneareadme.git",
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.30"
+    "@types/node": "^22.15.29"
   }
-}
