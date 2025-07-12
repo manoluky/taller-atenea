@@ -30,15 +30,15 @@ jobs:
 
       - name: Clonar repo Athenea redux bank
         run: |
-          git clone https://github.com/juantor16/playwrightCourse.git app
+          git clone git@github.com:AAtenea-Conocimientos/redux-athenea-bank.git
 
-      - name: Crear archivo .env backend
+      - name: Crear carpeta backend y archivo .env
         run: |
-      
+          mkdir -p app/backend
           echo "MONGO_URI=${{ secrets.MONGO_URI }}" > app/backend/.env
           echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> app/backend/.env
-          echo "PORT=${{ env.PORT}}" >> app/backend/.env
-          echo "VITE_API_URL=${{ env.VITE_API_URL}}" >> app/backend/.env
+          echo "PORT=${{ env.PORT }}" >> app/backend/.env
+          echo "VITE_API_URL=${{ env.VITE_API_URL }}" >> app/backend/.env
 
       - name: Instalar dependencias backend
         run: |
@@ -49,10 +49,6 @@ jobs:
         run: |
           cd app/backend
           npm run dev > backend.log 2>&1 &
-        env:
-            MONGO_URI: ${{ env.MONGO_URI }}
-            JWT_SECRET: ${{ env.JWT_SECRET }}
-            PORT: ${{ env.PORT }}
 
       - name: Instalar wait-on
         run: npm install -g wait-on
