@@ -52,7 +52,7 @@ jobs:
 
       - name: Instalar wait-on
         run: npm install -g wait-on
-             npx playwright test tests/loginUsuarioEnvia.spec.ts
+             npx playwright test tests/loginUsuarioEnvia.spec.ts ./tests
 
       - name: Esperar backend
         run: wait-on tcp:6007
