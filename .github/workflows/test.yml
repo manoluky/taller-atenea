@@ -30,11 +30,11 @@ jobs:
 
       - name: Clonar repo Athenea redux bank
         run: |
-          git clone https://github.com/juantor16/playwrightCourse.git
+          git clone https://github.com/juantor16/playwrightCourse.git app
 
       - name: Crear archivo .env backend
         run: |
-          mkdir -p app/backend
+      
           echo "MONGO_URI=${{ secrets.MONGO_URI }}" > app/backend/.env
           echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> app/backend/.env
           echo "PORT=${{ env.PORT}}" >> app/backend/.env
