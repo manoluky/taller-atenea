@@ -50,6 +50,9 @@ jobs:
           JWT_SECRET: ${{ env.JWT_SECRET }}
           PORT: ${{ env.PORT }}
 
+      - name: Mostrar logs backend
+        run: cat app/backend/backend.log || true
+
       - name: Instalar wait-on
         run: npm install -g wait-on
 
