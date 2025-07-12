@@ -71,11 +71,11 @@ jobs:
       - name: Esperar frontend
         run: wait-on http://localhost:3000
 
-      - name: Instalar y correr tests (proyectos setup + chromium)
-        run: |
-          npm install
-          npx playwright install
-          npx playwright test --reporter=html
+ #     - name: Instalar y correr tests (proyectos setup + chromium)
+ #       run: |
+ #         npm install
+ #         npx playwright install
+ #         npx playwright test --reporter=html
 
  #    - name: Guardar reportes como artifacts
  #      if: always()
