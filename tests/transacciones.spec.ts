@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { DashboardPage } from '../pages/dashboardPage';
-import { ModalEnviarTransferencia } from '../pages/modalEnviarTransferencia';
+import { ModalEnviarTransferencia } from '../pages/modalenviarTransferencia';
 import TestData from '../data/testData.json';
 import fs from 'fs/promises';
 
 let dashboardPage: DashboardPage;
-let modalEnviarTransferencia: ModalEnviarTransferencia;
+let modalenviarTransferencia: ModalEnviarTransferencia;
 
 const testUsuarioEnvia = test.extend({
     storageState: require.resolve('../playwright/.auth/usuarioEnvia.json')
@@ -17,7 +17,7 @@ const testUsuarioRecibe = test.extend({
 
 test.beforeEach(async ({ page }) => {
     dashboardPage = new DashboardPage(page);
-    modalEnviarTransferencia = new ModalEnviarTransferencia(page);
+    modalenviarTransferencia = new ModalEnviarTransferencia(page);
     await dashboardPage.visitarPaginaDashboard();
 })
 
@@ -28,7 +28,7 @@ testUsuarioEnvia('TC-12 Verificar transacción exitosa', async ({ page }) => {
     });
     await expect(dashboardPage.dashboardTitle).toBeVisible();
     await dashboardPage.botonEnviarDinero.click();
-    await modalEnviarTransferencia.completarYHacerClickBotonEnviar(TestData.usuarioValido.email, '100');
+    await modalenviarTransferencia.completarYHacerClickBotonEnviar(TestData.usuarioValido.email, '100');
     await expect(page.getByText('Transferencia enviada a ' + TestData.usuarioValido.email)).toBeVisible();
 })
 
