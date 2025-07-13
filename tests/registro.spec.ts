@@ -1,6 +1,6 @@
 import { test, expect, request } from '@playwright/test';
 import { RegisterPage } from '../pages/registerPage';
-import TestData from '../datos/TestData.json';
+import TestData from '../data/TestData.json';
 
 
 let registerPage: RegisterPage;
