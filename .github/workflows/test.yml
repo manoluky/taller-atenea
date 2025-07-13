@@ -87,11 +87,11 @@ jobs:
           name: playwright-report
           path: ./playwright-report 
 
-          #    - name: Deploy Playwright report to GitHub Pages
- #      if: always()
- #      run: |
- #        git config --global user.name "github-actions[bot]"
- #        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Deploy Playwright report to GitHub Pages
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
  #        # Clonar gh-pages branch en carpeta temporal
  #        cd $RUNNER_TEMP

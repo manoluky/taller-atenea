@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { DashboardPage } from '../pages/dashboardPage';
-import { ModalEnviarTransferencia } from '../pages/modalenviarTransferencia';
-import TestData from '../data/TestData.json';
+import { ModalEnviarTransferencia } from '../pages/modalEnviarTransferencia';
+import TestData from '../data/testData.json';
 import fs from 'fs/promises';
 
 let dashboardPage: DashboardPage;
@@ -22,9 +22,9 @@ test.beforeEach(async ({ page }) => {
 })
 
 testUsuarioEnvia('TC-12 Verificar transacción exitosa', async ({ page }) => {
-    testUsuarioEnvia.info().annotations.push({ 
-        type: 'Informacion de usuario que recibe', 
-        description: TestData.usuarioValido.email 
+    testUsuarioEnvia.info().annotations.push({
+        type: 'Informacion de usuario que recibe',
+        description: TestData.usuarioValido.email
     });
     await expect(dashboardPage.dashboardTitle).toBeVisible();
     await dashboardPage.botonEnviarDinero.click();
@@ -35,7 +35,6 @@ testUsuarioEnvia('TC-12 Verificar transacción exitosa', async ({ page }) => {
 testUsuarioRecibe('TC-13 Verificar que usuario reciba la transferencia', async ({ page }) => {
     await expect(dashboardPage.dashboardTitle).toBeVisible();
     await expect(page.getByText('Transferencia de email').first()).toBeVisible();
-
 })
 
 // Test unificado que envía dinero por API y verifica en la UI.
