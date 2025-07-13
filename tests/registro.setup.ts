@@ -1,6 +1,6 @@
 import { test as setup, expect } from '@playwright/test';
 import { BackendUtils } from '../utils/backendUtils';
-import TestData from '../data/testData.json';
+import TestData from '../data/TestData.json';
 import { LoginPage } from '../pages/loginPage';
 import { DashboardPage } from '../pages/dashboardPage';
 import { ModalCrearCuenta } from '../pages/modalCrearCuenta';
