@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { DashboardPage } from '../pages/dashboardPage';
 import { ModalEnviarTransferencia } from '../pages/modalenviarTransferencia';
-import TestData from '../data/TestData.json';
+import TestData from '../data/testData.json';
 import fs from 'fs/promises';
 
 let dashboardPage: DashboardPage;
